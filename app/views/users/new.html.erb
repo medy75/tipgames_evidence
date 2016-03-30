@@ -1,0 +1,27 @@
+<% @page_title = "UserAuth | Signup" %>
+<div class="Sign_Form">
+  <div class="page-header">
+    <h1>Sign Up</h1>
+  </div>
+  <%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
+    <div class="form-group">
+    	<p> Jméno:</br> <%= f.text_field :name, :class => "form-control" %> <span class="label label-warning">Povinný údaj</span></p>
+      <p> Uživ. jméno:</br> <%= f.text_field :username, :class => "form-control"%> <span class="label label-warning">Povinný údaj</span></p>
+      <p> Heslo:</br> <%= f.password_field :password, :class => "form-control"%><span class="label label-warning">Povinný údaj</span></p>
+      <p> Potvrzení hesla:</br> <%= f.password_field :password_confirmation, :class => "form-control"%> <span class="label label-warning">Povinný údaj</span></p>
+      <p> Email:</br> <%= f.text_field :email, :class => "form-control"%> <span class="label label-info">novak@novak.cz</span></p>
+      <p> Telefon:</br> <%= f.text_field :phone, :class => "form-control"%> <span class="label label-info">123 123 123</span></p>
+      <p> Datum narození:</br> <%= f.text_field :birth_date, :class => "form-control"%> <span class="label label-info">DD.MM.YYYY</span></p>
+      <p> Adresa:</br> <%= f.text_field :address, :class => "form-control"%> <span class="label label-info">Nepovinný údaj</span></p>
+      <p> Město:</br> <%= f.text_field :city, :class => "form-control"%> <span class="label label-info">Nepovinný údaj</span></p>
+      <%= f.submit :Signup %>
+    </div>
+  <% end %>
+  <% if @user.errors.any? %>
+    <ul class="Signup_Errors">
+    <% for message_error in @user.errors.full_messages %>
+      <li>* <%= message_error %></li>
+    <% end %>
+    </ul>
+  <% end %>
+</div>

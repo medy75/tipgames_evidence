@@ -1,0 +1,19 @@
+<% @page_title = "Edit user" %>
+<div class="Edit_user">
+  <h1>Editace</h1>
+  <%= form_for(:user, :url => {:controller => 'users', :action => 'update'}) do |f| %>
+    <p><%= @user.id %></p>
+    <p> ID:</br> <%= f.text_field :id, :value => @user.id %> </p>
+  	<p> Jméno:</br> <%= f.text_field :name, :value => @user.name %> </p>
+    <p> Uživ. jméno:</br> <%= f.text_field :username %> </p>
+    <p> Heslo:</br> <%= f.password_field :password, :value => @user.password %></p>
+    <%= f.submit :Update %>
+  <% end %>
+  <% if @user.errors.any? %>
+    <ul class="Signup_Errors">
+    <% for message_error in @user.errors.full_messages %>
+      <li><%= message_error %></li>
+    <% end %>
+    </ul>
+  <% end %>
+</div>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  	<title>TipgamesEvidence</title>
+	  	<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	  	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	  	<link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+	  	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	  	<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	    <script src="javascripts/bootstrap.min.js"></script>
+	    <!-- Main body -->
+	    <nav class="navbar navbar-default">
+		  	<div class="container-fluid">
+			    <div class="navbar-header">
+			      	<a class="navbar-brand" href="/login">
+			        	<img alt="Brand" src="XXassets/logo_small.png">
+			      	</a>
+			    </div>
+			    <div class="navbar-right">
+			      	<%= link_to "Přihlášení", login_path, :class => "btn btn-primary navbar-btn" %>
+			      	<%= link_to "Registrace", users_new_path, :class => "btn btn-default navbar-btn" %>
+			     </div>
+			 </div>
+		</nav>
+		<div class="container">
+			
+		 	<%= flash_messages %>
+			<%= yield %>
+		</div>
+	</body>
+</html>

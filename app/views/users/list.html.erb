@@ -1,0 +1,26 @@
+<% @page_title = "User" %>
+<div class="User">
+  <h1>Users</h1>
+  <td><%= link_to "Přidat uživatele", {:action => 'new'} %></td>
+  <table>
+  <tr>
+    <th>Jméno</th>
+    <th>Uživ. jméno</th>
+    <th>Heslo</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+ 
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= user.username %></td>
+    <td><%= user.password %></td>
+    <td><%= link_to "Show", {:action => 'show', :id => user.id} %></td>
+    <td><%= link_to "Edit", {:action => 'edit', :id => user.id} %></td>
+    <td><%= link_to "Remove", {:action => 'delete', :id => user.id}, data: { confirm: "Opravdu?" } %></td>
+  </tr>
+<% end %>
+</table>
+</div>

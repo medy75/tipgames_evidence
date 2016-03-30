@@ -1,0 +1,24 @@
+<% @page_title = "User" %>
+<div class="User">
+  <td><%= link_to "< seznam uživatelů", {:action => 'list'} %></td>
+  <h1>User</h1>
+  <p>
+    <strong>Jméno:</strong>
+    <%= @user.name %>
+  </p>
+ 
+  <p>
+   <strong>Uživ. jméno:</strong>
+   <%= @user.username %>
+  </p>
+
+  <p>
+   <strong>Heslo:</strong>
+   <%= @user.password %>
+  </p>
+  <p><%= link_to "Edit", {:action => 'edit', :id => @user.id} %></p>
+  <p><%= link_to "Remove", {:action => 'delete', :id => @user.id}, data: { confirm: "Opravdu?" } %></p>
+  <h3>Pobočky:</h3>
+  <p><%= link_to "Přidat pobočku", {:action => 'new', :id => @branches} %></p>
+  <p><%= @user.branches %></p>
+</div>
