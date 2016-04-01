@@ -23,13 +23,13 @@
 			        	<img alt="Tipgames" src="<%= image_url('logo_small.png') %>">
 			      	</a>
 			    </div>
-			    <div class="navbar-right">
+			    
+			    <div class="nav navbar-nav navbar-right">
 			    	<% if logged_in? %>
-			    		<%= link_to "Můj profil", {:action => 'show', :id => current_user.id}, :class => "btn btn-primary navbar-btn" %>
+			    		<%= link_to "Můj profil", {:action => 'show', :id => current_user.id}, :class => "btn btn-success navbar-btn" %>
 						<%= link_to "Odhlásit", logout_path, method: :delete, :class => "btn btn-default navbar-btn" %>
-						<%= link_to "Odhlásit", logout_path, method: :delete, :class => "btn btn-default navbar-btn", :style => "visibility: hidden" %>
 					<% else %>
-						<%= link_to "Přihlášení", login_path, :class => "btn btn-primary navbar-btn" %>
+						<%= link_to "Přihlášení", login_path, :class => "btn btn-success navbar-btn" %>
 				      	<%= link_to "Registrace", users_new_path, :class => "btn btn-default navbar-btn" %>
 				      	<%= link_to "Registrace", users_new_path, :class => "btn btn-default navbar-btn", :style => "visibility: hidden" %>
 					<% end %>

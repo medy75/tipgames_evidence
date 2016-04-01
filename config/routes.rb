@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
 
-  root :to => 'session#new'
+  get '/' => "welcome#index"
+  get 'welcome/index'
+
+  #root :to => 'session#new'
   #get 'welcome/index'
   #get '/' => 'home#index'
   
