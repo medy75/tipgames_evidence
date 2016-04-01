@@ -1,6 +1,19 @@
-<h1>Login</h1>
-<%= form_for(:session, :url => {:controller => 'session', :action => 'create'}) do |f| %>
-  	<p> Uživ. jméno:</br> <%= f.text_field :username%></p>
-    <p> Heslo:</br> <%= f.password_field :password%></p>
-    <%= f.submit :Login %>
-<% end %>
+<% @page_title = "Přihlášení" %>
+<div class="login_form">
+  <div class="page-header">
+    <h1>Přihlášení</h1>
+  </div>
+  <div class="span4">
+  	<%= form_for(:session, :url => {:controller => 'session', :action => 'create'}) do |f| %>
+  		<div class="form-group">
+	        <label for="nameInput">Uživatelské jméno:</label>
+	        <%= f.text_field :username, :class => "form-control", :placeholder => "", :type => "text" %>
+    	</div>
+    	<div class="form-group">
+	        <label for="nameInput">Heslo:</label>
+	        <%= f.text_field :password, :class => "form-control", :placeholder => "", :type => "password" %> 
+      	</div>
+	    <%= f.submit :Přihlásit, :class => "btn btn-success" %>
+	<% end %>
+  </div>
+</div>

@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
 
-  #root 'welcome/index'
+  root :to => 'session#new'
   #get 'welcome/index'
-  root 'session#new'
+  #get '/' => 'home#index'
   
   get 'login' => 'session#new'
   post 'login' => 'session#create'

@@ -1,19 +1,47 @@
 <% @page_title = "Edit user" %>
 <div class="Edit_user">
-  <h1>Editace</h1>
+  <div class="page-header">
+    <h1>Editace údajů</h1>
+  </div>
   <%= form_for(:user, :url => {:controller => 'users', :action => 'update'}) do |f| %>
-    <p><%= @user.id %></p>
-    <p> ID:</br> <%= f.text_field :id, :value => @user.id %> </p>
-  	<p> Jméno:</br> <%= f.text_field :name, :value => @user.name %> </p>
-    <p> Uživ. jméno:</br> <%= f.text_field :username %> </p>
-    <p> Heslo:</br> <%= f.password_field :password, :value => @user.password %></p>
-    <%= f.submit :Update %>
-  <% end %>
-  <% if @user.errors.any? %>
-    <ul class="Signup_Errors">
-    <% for message_error in @user.errors.full_messages %>
-      <li><%= message_error %></li>
-    <% end %>
-    </ul>
+    <div class="form-group">
+      <%= f.text_field :id, :class => "form-control", :value => @user.id, :type => "text", :style => "visibility:hidden"%>
+    </div>
+    <div class="form-group">
+      <label for="nameInput">Jméno:</label>
+      <%= f.text_field :name, :class => "form-control", :value => @user.name, :type => "text" %> 
+      <span class="label label-warning">Povinný údaj</span>
+    </div>
+    <div class="form-group">
+      <label for="nameInput">Uživatelské jméno:</label>
+      <%= f.text_field :username, :class => "form-control", :value => @user.username, :type => "text" %> 
+      <span class="label label-warning">Povinný údaj</span>
+    </div>
+    <div class="form-group">
+      <label for="nameInput">Heslo:</label>
+      <%= f.password_field :password, :class => "form-control", :value => @user.password, :type => "password" %> 
+      <span class="label label-warning">Povinný údaj</span>
+    </div>
+    <div class="form-group">
+      <label for="nameInput">Email:</label>
+      <%= f.text_field :email, :class => "form-control", :value => @user.email, :type => "email" %>
+    </div>
+    <div class="form-group">
+      <label for="nameInput">Telefon:</label>
+      <%= f.text_field :phone, :class => "form-control", :value => @user.phone, :type => "tel" %>
+    </div>
+    <div class="form-group">
+      <label for="nameInput">Datum narození:</label>
+      <%= f.text_field :birth_date, :class => "form-control", :value => @user.birth_date, :type => "date" %>
+    </div>
+    <div class="form-group">
+      <label for="nameInput">Ulice:</label>
+      <%= f.text_field :address, :class => "form-control", :value => @user.address, :type => "text" %> 
+    </div>
+    <div class="form-group">
+      <label for="nameInput">Město:</label>
+      <%= f.text_field :city, :class => "form-control", :value => @user.city, :type => "text" %> 
+    </div>
+    <%= f.submit :Aktualizovat, :class => "btn btn-success" %>
   <% end %>
 </div>
