@@ -1,0 +1,66 @@
+<% @page_title = "Provozovna" %>
+<div class="Branch">
+  <div class="page-header">
+    <h1>Detail provozovny <%= link_to "Editovat", {:action => 'edit', :id => @branch.id}, :class => "btn btn-default" %>
+  <%= link_to "Smazat", {:action => 'delete', :id => @branch.id}, data: { confirm: "Opravdu smazat provozovnu?" }, :class => "btn btn-danger" %></h1>
+  </div>
+  <address>
+    <strong><%= @branch.name %></strong><br>
+    <%= @branch.address %><br>
+    <%= @branch.city %><br>
+  </address>
+
+  <div class="page-header">
+    <h3>Přiřazení provozní</h3>
+  </div>
+
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Jméno</th>
+        <th>Uživatelské jméno</th>
+        <th>Email</th>
+        <th>Město</th>
+        <th>Akce</th>
+      </tr>
+    </thead>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.username %></td>
+        <td><%= user.email %></td>
+        <td><%= user.city %></td>
+        <td><%= link_to "Zobrazit", {:controller => 'users',:action => 'show', :id => user.id}, :class => 'btn btn-default' %>
+            <%= link_to "Upravit", {:controller => 'users',:action => 'edit', :id => user.id}, :class => 'btn btn-default' %>
+            <%= link_to "Odebrat", {:controller => 'branchs',:action => 'removeUser', :id => @branch.id, :user_id => user.id}, :class => 'btn btn-warning' %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <div class="page-header">
+    <h3>Všichni provozní</h3>
+  </div>
+
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Jméno</th>
+        <th>Uživatelské jméno</th>
+        <th>Email</th>
+        <th>Město</th>
+        <th>Akce</th>
+      </tr>
+    </thead>
+    <% @others.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.username %></td>
+        <td><%= user.email %></td>
+        <td><%= user.city %></td>
+        <td><%= link_to "Zobrazit", {:controller => 'users',:action => 'show', :id => user.id}, :class => 'btn btn-default' %>
+            <%= link_to "Upravit", {:controller => 'users',:action => 'edit', :id => user.id}, :class => 'btn btn-default' %>
+            <%= link_to "Přidat", {:controller => 'branchs',:action => 'addUser', :id => @branch.id, :user_id => user.id}, :class => 'btn btn-success' %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

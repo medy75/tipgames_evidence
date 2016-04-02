@@ -1,31 +1,39 @@
-<% @page_title = "User" %>
+<% @page_title = "Detail provozního" %>
 <div class="User">
-  <%= link_to "Zpět na seznam uživatelů", {:action => 'list'}, :class => "btn btn-default" %>
   <div class="page-header">
-    <h1>Detail uživatele</h1>
+    <h1>Detail uživatele <%= link_to "Editovat", {:action => 'edit', :id => @user.id}, :class => "btn btn-default" %>
+  <%= link_to "Smazat", {:action => 'delete', :id => @user.id}, data: { confirm: "Opravdu smazat uživatele?" }, :class => "btn btn-danger" %></h1>
   </div>
-  <p>
-    <strong>Jméno:</strong>
-    <%= @user.name %>
-  </p>
+  <address>
+    <strong><%= @user.username %> - <%= @user.name %></strong><br>
+    <a href="mailto:#"><%= @user.email %></a><br>
+    <%= @user.address %><br>
+    <%= @user.city %><br>
+    <abbr title="Telefon">Tel:</abbr> <%= @user.phone %>
+</address>
 
-  <p>
-    <strong>Aktuál:</strong>
-    
-  </p>
- 
-  <p>
-   <strong>Uživ. jméno:</strong>
-   <%= @user.username %>
-  </p>
-
-  <p>
-   <strong>Heslo:</strong>
-   <%= @user.password %>
-  </p>
-  <p><%= link_to "Edit", {:action => 'edit', :id => @user.id} %></p>
-  <p><%= link_to "Remove", {:action => 'delete', :id => @user.id}, data: { confirm: "Opravdu?" } %></p>
-  <h3>Pobočky:</h3>
-  <p><%= link_to "Přidat pobočku", {:action => 'new', :id => @branches} %></p>
-  <p><%= @user.branches %></p>
+  
+  <div class="page-header">
+    <h3>Provozovny <%= link_to "Přidat provozovnu", branchs_new_path, :class => "btn btn-default" %></h3>
+  </div>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Název</th>
+        <th>Adresa</th>
+        <th>Město</th>
+        <th>Akce</th>
+      </tr>
+    </thead>
+    <% @branches.each do |branch| %>
+      <tr>
+        <td><%= branch.name %></td>
+        <td><%= branch.address %></td>
+        <td><%= branch.city %></td>
+        <td><%= link_to "Zobrazit", {:controller => 'branchs', :action => 'show', :id => branch.id}, :class => "btn btn-default" %>
+            <%= link_to "Upravit", {:controller => 'branchs', :action => 'edit', :id => branch.id}, :class => "btn btn-default" %>
+            <%= link_to "Smazat", {:controller => 'branchs', :action => 'delete', :id => branch.id}, :class => "btn btn-danger", data: { confirm: "Opravdu?" } %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>

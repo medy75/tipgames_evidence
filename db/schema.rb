@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160330111449) do
+ActiveRecord::Schema.define(version: 20160401192931) do
 
   create_table "bilances", force: :cascade do |t|
     t.float    "in"
@@ -28,6 +28,14 @@ ActiveRecord::Schema.define(version: 20160330111449) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "branches_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "branch_id"
+  end
+
+  add_index "branches_users", ["branch_id"], name: "index_branches_users_on_branch_id"
+  add_index "branches_users", ["user_id"], name: "index_branches_users_on_user_id"
 
   create_table "machines", force: :cascade do |t|
     t.string   "name"

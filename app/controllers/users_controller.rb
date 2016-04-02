@@ -5,12 +5,11 @@ class UsersController < ApplicationController
   	def create
     	@user = User.new(user_params)
     	if @user.save
-      		flash[:notice] = "Úspěšné přidání"
-      		flash[:color]= "valid"
+      		flash[:success] = "Úspěšné přidání"
       		redirect_to :action => 'show', :id => @user
       		return
     	else
-      		flash[:notice] = "Přidání nebylo úspěšné"
+      		flash[:danger] = "Přidání nebylo úspěšné"
       		flash[:color]= "invalid"
     	end
     	render "new"
@@ -24,7 +23,7 @@ class UsersController < ApplicationController
   	def delete
    		User.find(params[:id]).destroy
    		redirect_to :action => 'list'
-	end
+	  end
 
 	def list
 		@users = User.all
@@ -39,14 +38,14 @@ class UsersController < ApplicationController
 	end
 
 	def update
-  		@user = User.find(params[:user][:id])
-  		if @user.update(user_params)
-  			flash[:success] = "Profil aktualizován"
-    		redirect_to :action => 'show', :id => @user
-  		else
-    	render :edit
+  	@user = User.find(params[:user][:id])
+  	if @user.update(user_params)
+  		flash[:success] = "Profil aktualizován"
+    	redirect_to :action => 'show', :id => @user
+  	else
+      render :edit
   	end
-end
+  end
 
 	private
   	def user_params

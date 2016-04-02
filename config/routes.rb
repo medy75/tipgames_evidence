@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
 
 
-  get '/' => "welcome#index"
+  get '/' => 'welcome#index'
   get 'welcome/index'
 
-  #root :to => 'session#new'
-  #get 'welcome/index'
-  #get '/' => 'home#index'
+  root :to => 'welcome#index'
   
   get 'login' => 'session#new'
   post 'login' => 'session#create'
@@ -21,13 +19,22 @@ Rails.application.routes.draw do
   get 'users/edit'
   get 'users/update'
   get 'users/show'
-  get ':controller(/:action(/:id))'
+  #get ':controller(/:action(/:id))'
   #get '/users/:id(.:format)'
 
-  get 'branches/new'
+  #resources :branchs
+  get 'branchs/new'
+  get 'branchs/show'
+  post 'branchs/show'
+  get 'branchs/list'
+  get 'branchs/delete'
+  get 'branchs/edit'
+  get 'branchs/update'
 
   match ':controller(/:action(/:id))(.:format)', :via => [:post]
   match ':controller(/:action(/:id))(.:format)', :via => [:get]
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
