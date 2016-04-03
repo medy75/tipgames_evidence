@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160403085900) do
+ActiveRecord::Schema.define(version: 20160403191055) do
 
   create_table "bilances", force: :cascade do |t|
     t.float    "in"
@@ -19,7 +19,10 @@ ActiveRecord::Schema.define(version: 20160403085900) do
     t.string   "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "machine_id"
   end
+
+  add_index "bilances", ["machine_id"], name: "index_bilances_on_machine_id"
 
   create_table "branches", force: :cascade do |t|
     t.string   "name"

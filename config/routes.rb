@@ -36,6 +36,9 @@ Rails.application.routes.draw do
   get 'machines/new'
   get 'machines/show'
 
+  get 'bilances/new'
+  get 'bilances/show'
+
   match ':controller(/:action(/:id))(.:format)', :via => [:post]
   match ':controller(/:action(/:id))(.:format)', :via => [:get]
 

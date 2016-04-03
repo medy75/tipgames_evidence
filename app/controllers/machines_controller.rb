@@ -19,6 +19,7 @@ class MachinesController < ApplicationController
 
 	def show
 		@machine = Machine.find(params[:id])
+		@bilances = @machine.bilances
 	end
 
 	private
