@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'machines/new'
+
   get '/' => 'welcome#index'
   get 'welcome/index'
 
@@ -30,6 +32,9 @@ Rails.application.routes.draw do
   get 'branchs/delete'
   get 'branchs/edit'
   get 'branchs/update'
+
+  get 'machines/new'
+  get 'machines/show'
 
   match ':controller(/:action(/:id))(.:format)', :via => [:post]
   match ':controller(/:action(/:id))(.:format)', :via => [:get]

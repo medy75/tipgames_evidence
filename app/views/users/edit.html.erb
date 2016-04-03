@@ -42,6 +42,7 @@
       <label for="nameInput">Město:</label>
       <%= f.text_field :city, :class => "form-control", :value => @user.city, :type => "text" %> 
     </div>
+     <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <%= f.submit :Aktualizovat, :class => "btn btn-success" %>
   <% end %>
 </div>

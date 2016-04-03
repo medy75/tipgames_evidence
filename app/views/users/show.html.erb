@@ -16,24 +16,26 @@
   <div class="page-header">
     <h3>Provozovny <%= link_to "Přidat provozovnu", branchs_new_path, :class => "btn btn-default" %></h3>
   </div>
-  <table class="table table-striped table-hover">
-    <thead>
-      <tr>
-        <th>Název</th>
-        <th>Adresa</th>
-        <th>Město</th>
-        <th>Akce</th>
-      </tr>
-    </thead>
-    <% @branches.each do |branch| %>
-      <tr>
-        <td><%= branch.name %></td>
-        <td><%= branch.address %></td>
-        <td><%= branch.city %></td>
-        <td><%= link_to "Zobrazit", {:controller => 'branchs', :action => 'show', :id => branch.id}, :class => "btn btn-default" %>
-            <%= link_to "Upravit", {:controller => 'branchs', :action => 'edit', :id => branch.id}, :class => "btn btn-default" %>
-            <%= link_to "Smazat", {:controller => 'branchs', :action => 'delete', :id => branch.id}, :class => "btn btn-danger", data: { confirm: "Opravdu?" } %></td>
-      </tr>
-    <% end %>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Název</th>
+          <th>Adresa</th>
+          <th>Město</th>
+          <th>Akce</th>
+        </tr>
+      </thead>
+      <% @branches.each do |branch| %>
+        <tr>
+          <td><%= branch.name %></td>
+          <td><%= branch.address %></td>
+          <td><%= branch.city %></td>
+          <td><%= link_to "Zobrazit", {:controller => 'branchs', :action => 'show', :id => branch.id}, :class => "btn btn-default" %>
+              <%= link_to "Upravit", {:controller => 'branchs', :action => 'edit', :id => branch.id}, :class => "btn btn-default" %>
+              <%= link_to "Smazat", {:controller => 'branchs', :action => 'delete', :id => branch.id}, :class => "btn btn-danger", data: { confirm: "Opravdu?" } %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 </div>

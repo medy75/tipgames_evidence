@@ -1,0 +1,31 @@
+<% @page_title = "Nový stroj" %>
+<div class="machines_form">
+	<div class="page-header">
+	    <h1>Nový stroj</h1>
+	</div>
+	<div class="span4">
+	    <%= form_for(:machine, :url => {:controller => 'machines', :action => 'create'}) do |f| %>
+	    	<div class="form-group">
+		        <label for="nameInput">Typ:</label>
+		        <%= f.select :category, Machine::TYPE, {}, {:class => "form-control"} %> 
+		        <span class="label label-warning">Povinný údaj</span>
+		    </div>
+	      <div class="form-group">
+	        <label for="nameInput">Název:</label>
+	        <%= f.text_field :name, :class => "form-control", :placeholder => "Magic 1", :type => "text" %> 
+	      </div>
+	      <%= f.submit :Přidat, :class => "btn btn-success" %>
+	      <div class="form-group" style = "visibility:hidden">
+		        <label for="nameInput">Id:</label>
+		        <%= f.text_field :branch_id, :class => "form-control", :value => @branch.id, :style => 'visibility:hidden' %> 
+	      	</div>
+	    <% end %>
+  	</div>
+  	<% if @machine.errors.any? %>
+    	<ul class="Add_Errors">
+	    	<% for message_error in @machine.errors.full_messages %>
+	    		<li><%= flash_messages %></li>
+	    	<% end %>
+    	</ul>
+  	<% end %>
+</div>

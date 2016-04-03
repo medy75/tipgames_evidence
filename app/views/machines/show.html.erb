@@ -1,0 +1,11 @@
+<% @page_title = "Detail stroje" %>
+<div class="Machine">
+  <div class="page-header">
+    <h1>Detail stroje <%= link_to "Editovat", {:action => 'edit', :id => @machine.id}, :class => "btn btn-default" %>
+  <%= link_to "Smazat", {:action => 'delete', :id => @machine.id}, data: { confirm: "Opravdu smazat stroj?" }, :class => "btn btn-danger" %></h1>
+  </div>
+  <address>
+    <strong><%= @machine.name %></strong><br>
+    <%= @machine.category %>
+  </address>
+</div>

@@ -29,6 +29,7 @@ class BranchsController < ApplicationController
     	@branch = Branch.find(params[:id])
     	@users = @branch.users
     	@others = User.all - @users
+    	@machines = @branch.machines
     end
 
     def removeUser
